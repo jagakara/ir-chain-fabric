@@ -10,7 +10,7 @@ $HOME/bin/configtxgen -profile ThreeOrgsChannel -outputAnchorPeersUpdate ./chann
 
 echo config-done
 
-CHANNEL_NAME=$CHANNEL_NAME TIMEOUT=10000 docker-compose -f docker-compose-cli.yaml up -d
+CHANNEL_NAME=$CHANNEL_NAME TIMEOUT=10000 docker-compose -f docker-compose-cli.yaml -f docker-compose-couch.yaml up -d
 
 echo all-done
 
