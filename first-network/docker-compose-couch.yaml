@@ -116,6 +116,7 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=
     depends_on:
       - couchdb3
+<<<<<<< HEAD
 
   couchdb4:
     container_name: couchdb4
@@ -171,3 +172,5 @@ services:
     depends_on:
       - couchdb5
       
+=======
+>>>>>>> origin

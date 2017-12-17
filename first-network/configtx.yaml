@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+---
+>>>>>>> origin
 ################################################################################
 #
 #   Profile
@@ -8,12 +17,17 @@
 ################################################################################
 Profiles:
 
+<<<<<<< HEAD
     ThreeOrgsOrdererGenesis:
+=======
+    TwoOrgsOrdererGenesis:
+>>>>>>> origin
         Orderer:
             <<: *OrdererDefaults
             Organizations:
                 - *OrdererOrg
         Consortiums:
+<<<<<<< HEAD
             MizuhoConsortium:
                 Organizations:
                     - *Org1
@@ -21,12 +35,23 @@ Profiles:
                     - *Org3
     ThreeOrgsChannel:
         Consortium: MizuhoConsortium
+=======
+            SampleConsortium:
+                Organizations:
+                    - *Org1
+                    - *Org2
+    TwoOrgsChannel:
+        Consortium: SampleConsortium
+>>>>>>> origin
         Application:
             <<: *ApplicationDefaults
             Organizations:
                 - *Org1
                 - *Org2
+<<<<<<< HEAD
                 - *Org3
+=======
+>>>>>>> origin
 
 ################################################################################
 #
@@ -84,6 +109,7 @@ Organizations:
             # encoded in the genesis block in the Application section context
             - Host: peer0.org2.example.com
               Port: 7051
+<<<<<<< HEAD
               
     - &Org3
         # DefaultOrg defines the organization which is used in the sampleconfig
@@ -101,6 +127,8 @@ Organizations:
             # encoded in the genesis block in the Application section context
             - Host: peer0.org3.example.com
               Port: 7051
+=======
+>>>>>>> origin
 
 ################################################################################
 #
@@ -160,4 +188,7 @@ Application: &ApplicationDefaults
     # Organizations is the list of orgs which are defined as participants on
     # the application side of the network
     Organizations:
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin
