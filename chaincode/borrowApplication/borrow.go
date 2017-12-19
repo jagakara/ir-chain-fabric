@@ -18,7 +18,7 @@ type MaxNumber struct {
 	MaxApplicationNo string `json:"maxApplicationNo"`
 }
 
-// borrowApplication example simple Chaincode implementation
+// borrowApplication Chaincode implementation
 type borrowApplication struct {
 	ApplicationNo     string `json:"applicationNo"`
 	SystemNo          string `json:"systemNo"`
@@ -28,6 +28,10 @@ type borrowApplication struct {
 	EndDate           string `json:"endDate"`
 	Authorizer        string `json:"authorizer"`
 	ApplicationStatus string `json:"applicationStatus"`
+	Registrant        string `json:"registrant"`
+	Rechecker         string `json:"rechecker"`
+	Reviewer          string `json:"reviewer"`
+	Authorizer        string `json:"authorizer"`
 }
 
 /*
@@ -65,7 +69,7 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 }
 func (s *SmartContract) createApplication(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 6 {
+	if len(args) != 10 {
 		return shim.Error("Incorrect number of arguments. Expecting 6")
 	}
 
@@ -89,6 +93,10 @@ func (s *SmartContract) createApplication(APIstub shim.ChaincodeStubInterface, a
 		StartDate:         args[3],
 		EndDate:           args[4],
 		Authorizer:        args[5],
+		Registrant         args[6],
+		Rechecker          args[7],
+		Reviewer           args[8],
+		Authorizer         args[9],
 		ApplicationStatus: "0",
 	}
 
