@@ -50,7 +50,6 @@ services:
     networks:
       - byfn
 
-<<<<<<< HEAD
   peer0.org3.example.com:
     container_name: peer0.org3.example.com
     extends:
@@ -67,8 +66,6 @@ services:
     networks:
       - byfn
 
-=======
->>>>>>> origin
   cli:
     container_name: cli
     image: hyperledger/fabric-tools
@@ -86,11 +83,7 @@ services:
       - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
       - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
-<<<<<<< HEAD
 #   command: /bin/bash -c './scripts/script.sh ${CHANNEL_NAME} ${DELAY}; sleep $TIMEOUT'
-=======
-    command: /bin/bash -c './scripts/script.sh ${CHANNEL_NAME} ${DELAY}; sleep $TIMEOUT'
->>>>>>> origin
     volumes:
         - /var/run/:/host/var/run/
         - ./../chaincode/:/opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go
@@ -103,11 +96,8 @@ services:
       - peer1.org1.example.com
       - peer0.org2.example.com
       - peer1.org2.example.com
-<<<<<<< HEAD
       - peer0.org3.example.com
       - peer1.org3.example.com
-=======
->>>>>>> origin
     networks:
       - byfn
 
