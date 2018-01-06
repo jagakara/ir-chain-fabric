@@ -1,4 +1,6 @@
 $HOME/bin/cryptogen generate --config=./crypto-config.yaml
+
+# 秘密鍵のファイル名を固定
 mv ./crypto-config/peerOrganizations/org1.example.com/ca/*_sk ./crypto-config/peerOrganizations/org1.example.com/ca/CA1_PRIVATE_KEY
 mv ./crypto-config/peerOrganizations/org2.example.com/ca/*_sk ./crypto-config/peerOrganizations/org2.example.com/ca/CA2_PRIVATE_KEY
 mv ./crypto-config/peerOrganizations/org3.example.com/ca/*_sk ./crypto-config/peerOrganizations/org3.example.com/ca/CA3_PRIVATE_KEY
@@ -14,6 +16,7 @@ $HOME/bin/configtxgen -profile ThreeOrgsChannel -outputAnchorPeersUpdate ./chann
 
 echo config-done
 
-CHANNEL_NAME=$CHANNEL_NAME TIMEOUT=10000 docker-compose -f docker-compose-cli.yaml -f docker-compose-couch.yaml up -d
+# dockerの起動
+CHANNEL_NAME=$CHANNEL_NAME TIMEOUT=10000 docker-compose -f docker-compose-cli.yaml -f docker-compose-couch.yaml -f docker-compose-ca.yaml up -d
 
 echo all-done
