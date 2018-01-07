@@ -16,3 +16,7 @@ docker restart couchdb3
 docker restart couchdb4
 docker restart couchdb5
 
+#enter the CLI container
+docker exec -it cli bash
+
+export CHANNEL_NAME = mychannel
