@@ -68,7 +68,7 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 }
 func (s *SmartContract) createApplication(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 10 {
+	if len(args) != 9 {
 		return shim.Error("Incorrect number of arguments. Expecting 6")
 	}
 
