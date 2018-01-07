@@ -26,7 +26,6 @@ type borrowApplication struct {
 	DataQuantity      string `json:"dataQuantity"`
 	StartDate         string `json:"startDate"`
 	EndDate           string `json:"endDate"`
-	Authorizer        string `json:"authorizer"`
 	ApplicationStatus string `json:"applicationStatus"`
 	Registrant        string `json:"registrant"`
 	Rechecker         string `json:"rechecker"`
@@ -92,11 +91,10 @@ func (s *SmartContract) createApplication(APIstub shim.ChaincodeStubInterface, a
 		DataQuantity:      args[2],
 		StartDate:         args[3],
 		EndDate:           args[4],
-		Authorizer:        args[5],
-		Registrant         args[6],
-		Rechecker          args[7],
-		Reviewer           args[8],
-		Authorizer         args[9],
+		Registrant:        args[5],
+		Rechecker:         args[6],
+		Reviewer:          args[7],
+		Authorizer:        args[8],
 		ApplicationStatus: "0",
 	}
 
