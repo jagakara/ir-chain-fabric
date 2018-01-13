@@ -16,7 +16,8 @@ docker restart couchdb3
 docker restart couchdb4
 docker restart couchdb5
 
+#cliでの環境変数定義が上手くいかない。
 #enter the CLI container
-docker exec -it cli bash
+#docker exec -it cli bash
 
-export CHANNEL_NAME = mychannel
+#export CHANNEL_NAME=mychannel
