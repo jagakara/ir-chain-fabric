@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"strconv"
@@ -63,6 +64,8 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 		return s.createApplication(APIstub, args)
 	} else if function == "queryApplication" {
 		return s.queryApplication(APIstub, args)
+	} else if function == "queryAllApplications" {
+		return s.queryAllApplications(APIstub, args)
 	}
 	return shim.Error("Invalid Smart Contract function name.")
 }
@@ -117,7 +120,6 @@ func (s *SmartContract) queryApplication(APIstub shim.ChaincodeStubInterface, ar
 	return shim.Success(borrowApplicationAsBytes)
 }
 
-/*
 func (s *SmartContract) queryAllApplications(APIstub shim.ChaincodeStubInterface) sc.Response {
 
 	startKey := "0"
@@ -160,7 +162,6 @@ func (s *SmartContract) queryAllApplications(APIstub shim.ChaincodeStubInterface
 
 	return shim.Success(buffer.Bytes())
 }
-*/
 
 // The main function is only relevant in unit test mode. Only included here for completeness.
 func main() {
