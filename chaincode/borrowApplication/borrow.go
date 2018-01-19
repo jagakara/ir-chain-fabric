@@ -65,10 +65,13 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 	} else if function == "queryApplication" {
 		return s.queryApplication(APIstub, args)
 	} else if function == "queryAllApplications" {
-		return s.queryAllApplications(APIstub, args)
+		return s.queryAllApplications(APIstub)
+	} else if function == "changeApplicationStatus" {
+		return s.changeApplicationStatus(APIstub, args)
 	}
 	return shim.Error("Invalid Smart Contract function name.")
 }
+
 func (s *SmartContract) createApplication(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
 	if len(args) != 9 {
@@ -106,6 +109,24 @@ func (s *SmartContract) createApplication(APIstub shim.ChaincodeStubInterface, a
 
 	APIstub.PutState("maxApplicationNo", maxNumberAsBytes)
 	APIstub.PutState(maxNumber.MaxApplicationNo, borrowApplicationAsBytes)
+
+	return shim.Success(nil)
+}
+
+func (s *SmartContract) changeApplicationStatus(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	changeApplicationStatusAsBytes, _ := APIstub.GetState(args[0])
+	borrowApplication := borrowApplication{}
+
+	json.Unmarshal(changeApplicationStatusAsBytes, &borrowApplication)
+	borrowApplication.ApplicationStatus = args[1]
+
+	changeApplicationStatusAsBytes, _ = json.Marshal(borrowApplication)
+	APIstub.PutState(args[0], changeApplicationStatusAsBytes)
 
 	return shim.Success(nil)
 }
